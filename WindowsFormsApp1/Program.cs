@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
 
             string tokenPath = "auth.token";
             HttpClient httpClient = new HttpClient
@@ -25,21 +24,57 @@ namespace WindowsFormsApp1
             };
             httpClient.DefaultRequestHeaders.Add("x-api-key", "12345-abcdef-67890");
 
-            if (File.Exists(tokenPath))
+            bool tokenValidAndUsed = false;
+
+            try
             {
-                string token = File.ReadAllText(tokenPath);
-                if (IsTokenValid(token))
+                MessageBox.Show("getting token");
+
+                if (File.Exists(tokenPath))
                 {
-                    httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                    Application.Run(new Landing(httpClient));
-                    return;
+                    try
+                    {
+                        string token = File.ReadAllText(tokenPath);
+                        if (IsTokenValid(token))
+                        {
+                            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                            tokenValidAndUsed = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Existing token is invalid or expired. Please log in again.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error reading or validating token file: {ex.Message}");
+                    }
                 }
                 else
                 {
-                    Application.Run(new LoginForm(httpClient));
+                    MessageBox.Show("Token file not found. Please log in.");
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred during setup: {ex.Message}");
+            }
 
+            if (tokenValidAndUsed)
+            {
+                Application.Run(new Landing(httpClient));
+            }
+            else
+            {
+                LoginForm loginForm = new LoginForm(httpClient);
+
+                DialogResult loginResult = loginForm.ShowDialog();
+
+                if (loginResult == DialogResult.OK)
+                {
+                    Application.Run(new Landing(httpClient));
+                }
+            }
         }
 
         static bool IsTokenValid(string token)
@@ -56,7 +91,10 @@ namespace WindowsFormsApp1
                     return expDate > DateTimeOffset.UtcNow;
                 }
             }
-            catch { }
+            catch
+            {
+                return false;
+            }
 
             return false;
         }
