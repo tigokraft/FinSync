@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                MessageBox.Show("getting token");
+                //MessageBox.Show("getting token");
 
                 if (File.Exists(tokenPath))
                 {
@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            MessageBox.Show("Existing token is invalid or expired. Please log in again.");
+                            //MessageBox.Show("Existing token is invalid or expired. Please log in again.");
                         }
                     }
                     catch (Exception ex)
@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Token file not found. Please log in.");
+                    //MessageBox.Show("Token file not found. Please log in.");
                 }
             }
             catch (Exception ex)

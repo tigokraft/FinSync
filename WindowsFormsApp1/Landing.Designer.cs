@@ -28,72 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
-            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
-            this.gunaDragControl2 = new Guna.UI.WinForms.GunaDragControl(this.components);
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.SuspendLayout();
             // 
-            // gunaElipse1
+            // guna2ControlBox1
             // 
-            this.gunaElipse1.TargetControl = this;
-            // 
-            // gunaControlBox1
-            // 
-            this.gunaControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaControlBox1.AnimationHoverSpeed = 0.07F;
-            this.gunaControlBox1.AnimationSpeed = 0.03F;
-            this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(749, 5);
-            this.gunaControlBox1.Name = "gunaControlBox1";
-            this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(58)))), ((int)(((byte)(183)))));
-            this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
-            this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.Size = new System.Drawing.Size(45, 29);
-            this.gunaControlBox1.TabIndex = 0;
-            // 
-            // gunaDragControl1
-            // 
-            this.gunaDragControl1.TargetControl = null;
-            // 
-            // gunaDragControl2
-            // 
-            this.gunaDragControl2.TargetControl = this;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLabel1.Location = new System.Drawing.Point(12, 19);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(68, 15);
-            this.gunaLabel1.TabIndex = 1;
-            this.gunaLabel1.Text = "gunaLabel1";
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.HoverState.Parent = this.guna2ControlBox1;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(755, 0);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.PressedColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.ShadowDecoration.Parent = this.guna2ControlBox1;
+            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
+            this.guna2ControlBox1.TabIndex = 0;
             // 
             // Landing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.gunaLabel1);
-            this.Controls.Add(this.gunaControlBox1);
+            this.Controls.Add(this.guna2ControlBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Landing";
             this.Text = "Landing";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Guna.UI.WinForms.GunaElipse gunaElipse1;
-        private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        private Guna.UI.WinForms.GunaDragControl gunaDragControl1;
-        private Guna.UI.WinForms.GunaDragControl gunaDragControl2;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }
