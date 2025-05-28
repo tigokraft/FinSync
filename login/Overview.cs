@@ -11,6 +11,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.IO;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Windows.Controls;
 
 namespace login
 {
@@ -20,10 +22,16 @@ namespace login
         public Overview(HttpClient httpClient)
         {
             InitializeComponent();
-            SetupChart();
+            //SetupChart();
             _http = httpClient;
+            Loader();
 
+        }
 
+        private async void Loader()
+        {
+            var balance = await GetBalanceAsync();
+            BalanceTxt.Text = $"{balance:C2}";
         }
 
         private void SetupChart()
@@ -122,41 +130,44 @@ namespace login
 
         public async Task<decimal> GetBalanceAsync()
         {
-            string? token = LoadToken();
+            var token = LoadToken();
             if (string.IsNullOrEmpty(token))
             {
                 MessageBox.Show("No saved token. Please log in.");
                 return 0;
             }
 
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:5034/");
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                client.DefaultRequestHeaders.Add("x-api-key", "12345-abcdef-67890");
-
-                try
+                var response = await _http.GetAsync("api/balance");
+                if (response.IsSuccessStatusCode)
                 {
-                    var response = await client.GetAsync("api/balance");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string body = await response.Content.ReadAsStringAsync();
-                        if (decimal.TryParse(body, out var balance))
-                            return balance;
-                    }
+                    string body = await response.Content.ReadAsStringAsync();
 
-                    MessageBox.Show("Failed to fetch balance.");
+                    // Optionally log to debug or MessageBox
+                    Console.WriteLine($"Raw balance response: {body}");
+
+                    if (decimal.TryParse(body, out var balance))
+                        return balance;
+
+                    MessageBox.Show("Failed to parse balance value.");
                     return 0;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                    return 0;
-                }
+
+                MessageBox.Show("Failed to fetch balance.");
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return 0;
             }
         }
 
-        public static string? LoadToken()
+
+
+
+        public static string LoadToken()
         {
             string tokenPath = "auth.token";
 
@@ -164,6 +175,60 @@ namespace login
                 return File.ReadAllText(tokenPath);
 
             return null;
+        }
+
+        bool menuExpand = true;
+        private void menuTransition_Tick_1(object sender, EventArgs e)
+        {
+            if (menuExpand)
+            {
+                sidebar.Width -= 10;
+                OvBtn.Width = sidebar.Width - 20;
+                budgetBtn.Width = sidebar.Width - 20;
+                ExpensesBtn.Width = sidebar.Width - 20;
+                GoalsBtn.Width = sidebar.Width - 20;
+
+                //for (int i = 100; i > 0; i--)
+                //{
+                //    OvBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //    budgetBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //    ExpensesBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //    GoalsBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //}
+
+                if (sidebar.Width <= 65)
+                {
+                    menuExpand = false;
+                    menuTransition.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                OvBtn.Width = sidebar.Width - 20;
+                budgetBtn.Width = sidebar.Width - 20;
+                ExpensesBtn.Width = sidebar.Width - 20;
+                GoalsBtn.Width = sidebar.Width - 20;
+
+                //for (int i = 0; i <= 100; i++)
+                //{
+                //    OvBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //    budgetBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //    ExpensesBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //    GoalsBtn.ForeColor = Color.FromArgb(i, 255, 255, 255);
+                //}
+
+                if (sidebar.Width >= 200)
+                {
+                    menuExpand = true;
+                    menuTransition.Stop();
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            menuTransition.Start();
         }
     }
 }

@@ -32,21 +32,26 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.budgetBtn = new Guna.UI2.WinForms.Guna2Button();
             this.ExpensesBtn = new Guna.UI2.WinForms.Guna2Button();
             this.GoalsBtn = new Guna.UI2.WinForms.Guna2Button();
             this.OvBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.label3 = new System.Windows.Forms.Label();
             this.BalanceTxt = new Guna.UI.WinForms.GunaLabel();
-            this.panel1.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
+            this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.sidebar = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.guna2GradientPanel1.SuspendLayout();
+            this.guna2GradientPanel2.SuspendLayout();
+            this.sidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -69,21 +74,6 @@
             this.label1.Size = new System.Drawing.Size(99, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "FinSync";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.panel1.Controls.Add(this.guna2Button1);
-            this.panel1.Controls.Add(this.budgetBtn);
-            this.panel1.Controls.Add(this.ExpensesBtn);
-            this.panel1.Controls.Add(this.GoalsBtn);
-            this.panel1.Controls.Add(this.OvBtn);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(-1, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 601);
-            this.panel1.TabIndex = 0;
             // 
             // guna2Button1
             // 
@@ -127,6 +117,7 @@
             this.budgetBtn.TabIndex = 8;
             this.budgetBtn.Text = "Budgets";
             this.budgetBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.budgetBtn.TextOffset = new System.Drawing.Point(10, 0);
             this.budgetBtn.Click += new System.EventHandler(this.budgetBtn_Click);
             // 
             // ExpensesBtn
@@ -149,6 +140,7 @@
             this.ExpensesBtn.TabIndex = 7;
             this.ExpensesBtn.Text = "Expenses";
             this.ExpensesBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ExpensesBtn.TextOffset = new System.Drawing.Point(10, 0);
             this.ExpensesBtn.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // GoalsBtn
@@ -171,6 +163,7 @@
             this.GoalsBtn.TabIndex = 6;
             this.GoalsBtn.Text = "Goals";
             this.GoalsBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.GoalsBtn.TextOffset = new System.Drawing.Point(10, 0);
             this.GoalsBtn.Click += new System.EventHandler(this.GoalsBtn_Click);
             // 
             // OvBtn
@@ -193,18 +186,9 @@
             this.OvBtn.TabIndex = 5;
             this.OvBtn.Text = "Overview";
             this.OvBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.OvBtn.TextOffset = new System.Drawing.Point(10, 0);
             this.OvBtn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.OvBtn.Click += new System.EventHandler(this.OvBtn_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.ForeColor = System.Drawing.Color.Thistle;
-            this.panel2.Location = new System.Drawing.Point(200, -1);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 601);
-            this.panel2.TabIndex = 1;
             // 
             // label2
             // 
@@ -239,7 +223,7 @@
             // 
             this.guna2GradientPanel1.AutoRoundedCorners = true;
             this.guna2GradientPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.guna2GradientPanel1.BorderRadius = 5;
+            this.guna2GradientPanel1.BorderRadius = 15;
             this.guna2GradientPanel1.BorderThickness = 1;
             this.guna2GradientPanel1.Controls.Add(this.BalanceTxt);
             this.guna2GradientPanel1.Controls.Add(this.label3);
@@ -252,21 +236,10 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(200, 100);
             this.guna2GradientPanel1.TabIndex = 9;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Inter Medium", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(48, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 21);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Total Balance";
-            // 
             // BalanceTxt
             // 
             this.BalanceTxt.AutoSize = true;
-            this.BalanceTxt.Font = new System.Drawing.Font("Inter Medium", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BalanceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BalanceTxt.ForeColor = System.Drawing.Color.Transparent;
             this.BalanceTxt.Location = new System.Drawing.Point(3, 54);
             this.BalanceTxt.MaximumSize = new System.Drawing.Size(200, 35);
@@ -278,24 +251,110 @@
             this.BalanceTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BalanceTxt.Click += new System.EventHandler(this.BalanceTxt_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(48, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Total Balance";
+            // 
+            // guna2GradientPanel2
+            // 
+            this.guna2GradientPanel2.AutoRoundedCorners = true;
+            this.guna2GradientPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.guna2GradientPanel2.BorderRadius = 15;
+            this.guna2GradientPanel2.BorderThickness = 1;
+            this.guna2GradientPanel2.Controls.Add(this.gunaLabel1);
+            this.guna2GradientPanel2.Controls.Add(this.label4);
+            this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.guna2GradientPanel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            this.guna2GradientPanel2.Location = new System.Drawing.Point(470, 80);
+            this.guna2GradientPanel2.Name = "guna2GradientPanel2";
+            this.guna2GradientPanel2.ShadowDecoration.Parent = this.guna2GradientPanel2;
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(200, 100);
+            this.guna2GradientPanel2.TabIndex = 10;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Transparent;
+            this.gunaLabel1.Location = new System.Drawing.Point(3, 54);
+            this.gunaLabel1.MaximumSize = new System.Drawing.Size(200, 35);
+            this.gunaLabel1.MinimumSize = new System.Drawing.Size(194, 35);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(194, 35);
+            this.gunaLabel1.TabIndex = 1;
+            this.gunaLabel1.Text = "$spent";
+            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(35, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(135, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Spent This Month";
+            // 
+            // sidebar
+            // 
+            this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.sidebar.Controls.Add(this.guna2Button1);
+            this.sidebar.Controls.Add(this.budgetBtn);
+            this.sidebar.Controls.Add(this.ExpensesBtn);
+            this.sidebar.Controls.Add(this.GoalsBtn);
+            this.sidebar.Controls.Add(this.OvBtn);
+            this.sidebar.Controls.Add(this.label1);
+            this.sidebar.Location = new System.Drawing.Point(-1, -1);
+            this.sidebar.Margin = new System.Windows.Forms.Padding(0);
+            this.sidebar.Name = "sidebar";
+            this.sidebar.Size = new System.Drawing.Size(201, 601);
+            this.sidebar.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.ForeColor = System.Drawing.Color.Thistle;
+            this.panel2.Location = new System.Drawing.Point(200, -1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 601);
+            this.panel2.TabIndex = 1;
+            // 
+            // menuTransition
+            // 
+            this.menuTransition.Interval = 20;
+            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick_1);
+            // 
             // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.guna2GradientPanel2);
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.sidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Overview";
             this.Text = "Overview";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
+            this.guna2GradientPanel2.ResumeLayout(false);
+            this.guna2GradientPanel2.PerformLayout();
+            this.sidebar.ResumeLayout(false);
+            this.sidebar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,8 +364,6 @@
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
         private System.Windows.Forms.Label label2;
@@ -319,5 +376,11 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaLabel BalanceTxt;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel sidebar;
+        private System.Windows.Forms.Timer menuTransition;
     }
 }

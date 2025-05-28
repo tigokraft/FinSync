@@ -147,6 +147,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="tabs\Expenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tabs\Expenses.Designer.cs">
+      <DependentUpon>Expenses.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ForgotPwd.resx">
       <DependentUpon>ForgotPwd.cs</DependentUpon>
     </EmbeddedResource>
